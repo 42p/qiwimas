@@ -41,7 +41,7 @@ describe('Test QiwiMaster', function () {
 
     it ('Get history of week', () => {
         return QiwiMas.getHistoryWeek().then(transactions => {
-            console.log(transactions.reverse());
+            console.log(transactions);
         });
     });
 

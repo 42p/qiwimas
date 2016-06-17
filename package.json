@@ -28,6 +28,8 @@
     "config": "^1.19.0",
     "fs-jetpack": "^0.7.3",
     "lodash": "^4.9.0",
+    "mockery": "^1.7.0",
+    "mysql2": "^1.0.0-rc.4",
     "request-promise": "^2.0.1",
     "tough-cookie-file-store": "^1.1.0"
   }

@@ -35,13 +35,12 @@ describe('Test QiwiMaster', function () {
 
     it ('Parser transactions', () => {
         let transactions = QiwiMas.parseTransactions(fs.read(path.join(__dirname, 'resource/qiwi_history.html')));
-        console.log(transactions);
         assert(transactions.length);
     });
 
     it ('Get history of week', () => {
         return QiwiMas.getHistoryWeek().then(transactions => {
-            console.log(transactions);
+            //console.log(transactions);
         });
     });
 

@@ -139,15 +139,10 @@ describe('Test checking balance class', function () {
 
         return checkingBalance.updaterTransactions().then(countAdded => {
             assert(countAdded > 0);
+
+            return checkingBalance.removeAllTransactions();
         });
     });
 
-
-    it ('Mysql', () => {
-        var a1 = 0;
-        var a2 = ++a1;
-
-        console.log(a2);
-    });
 
 });

@@ -8,7 +8,10 @@ describe('Test checking balance class', function () {
 
     this.timeout(0);
 
-    var checkingBalance = new CheckingBalance(config.get('qiwi'));
+    var checkingBalance = new CheckingBalance({
+        qiwi: config.get('qiwi'),
+        database: config.get('database')
+    });
 
     it ('Test updater balance', (done) => {
 
@@ -135,7 +138,10 @@ describe('Test checking balance class', function () {
         });
 
         let CheckingBalance = require('../lib/CheckingBalance');
-        let checkingBalance = new CheckingBalance(config.get('qiwi'));
+        let checkingBalance = new CheckingBalance({
+            qiwi: config.get('qiwi'),
+            database: config.get('database')
+        });
 
         return checkingBalance.updaterTransactions().then(countAdded => {
             assert(countAdded > 0);
@@ -143,6 +149,5 @@ describe('Test checking balance class', function () {
             return checkingBalance.removeAllTransactions();
         });
     });
-
 
 });

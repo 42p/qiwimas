@@ -37,6 +37,35 @@ describe('Test checking balance class', function () {
         }, (checkingBalance.intervalCheckBalance * 1000) * 2 + (20 * 1000));
     });
 
+    it ('Test sopped updater', (done) => {
+        var countUpdate = 0;
+        let cbUpdate = (err, balance, changed) => {
+            if (err) {
+                done(err);
+            } else {
+                countUpdate++;
+                console.log('Update balance %s, typeof %s', balance, typeof balance);
+            }
+        };
+
+        checkingBalance.intervalCheckBalance = 10;
+        checkingBalance.updaterBalance(cbUpdate);
+
+        setTimeout(() => {
+            checkingBalance.updaterBalanceDisable();
+
+            setTimeout(() => {
+                try {
+                    assert.isFalse(checkingBalance.workUpdaterBalance);
+                    done();
+                } catch (e) {
+                    done(e);
+                }
+            }, 15 * 1000);
+        }, 15 * 1000);
+
+    });
+
     it ('Add transaction', () => {
         return checkingBalance.addTransaction({
             qiwi_id: 12345,

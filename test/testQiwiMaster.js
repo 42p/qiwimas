@@ -44,4 +44,17 @@ describe('Test QiwiMaster', function () {
         });
     });
 
+    it ('Custom path file to cookies', () => {
+
+        let pathDir = path.join(__dirname, '../storage/testdir');
+
+        fs.dir(pathDir);
+
+        var QiwiMaster = new qiwiMaster(config.get('qiwi'), pathDir);
+
+        return QiwiMaster.login().then(() => {
+            fs.remove(pathDir);
+        });
+    });
+
 });

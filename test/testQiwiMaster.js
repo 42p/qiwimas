@@ -57,4 +57,20 @@ describe('Test QiwiMaster', function () {
         });
     });
 
+    it ('Get current purse', () => {
+        assert.equal(QiwiMas.currentPurse(), config.get('qiwi.phone'));
+    });
+
+    it ('Change purse', () => {
+
+        QiwiMas.changePurse({
+            phone: '11111',
+            pass: '123'
+        });
+
+        assert.equal(QiwiMas.currentPurse(), '11111');
+
+        QiwiMas.changePurse(config.get('qiwi'));
+    });
+
 });

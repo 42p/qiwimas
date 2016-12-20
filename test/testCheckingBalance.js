@@ -13,6 +13,22 @@ describe('Test checking balance class', function () {
         database: config.get('database')
     });
 
+    it ('Working updater balance', (done) => {
+        let count = 0;
+
+        checkingBalance.updaterBalance((err, balance, changed) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('OK. Balance: %s', balance);
+            }
+
+            if (count > 500) done();
+
+            count++;
+        });
+    });
+
     it ('Test updater balance', (done) => {
 
         var countUpdate = 0;

@@ -14,7 +14,7 @@ describe('Test QiwiMaster', function () {
 
     it ('Login to qiwi', () => {
         return QiwiMas.login().catch(err => {
-            console.log(err);
+            console.log('Error qiwimas.login()', err);
             done(err);
         });
     });
